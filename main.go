@@ -10,8 +10,6 @@ import (
 	"strings"
 )
 
-const userAgent = "lukedadjokesgo"
-
 func handleError(err error) {
 	if err != nil {
 		log.Fatalln("Sorry, something went wrong: ", err)
@@ -22,7 +20,7 @@ func getJokes(query string) {
 	client := http.Client{}
 
 	req, err := http.NewRequest("GET", fmt.Sprintf("https://www.reddit.com/r/dadjokes/search.json?q=%s&restrict_sr=on&sort=top&t=all&count=10", query), nil)
-	req.Header.Set("User-Agent", userAgent)
+	req.Header.Set("User-Agent", "lukedadjokesgo")
 	handleError(err)
 
 	res, err := client.Do(req)
